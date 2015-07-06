@@ -5,8 +5,8 @@
  *      Author: sg
  */
 
-#ifndef BOARD_H_
-#define BOARD_H_
+#ifndef CUSTOMHID_ORIG_BOARD_H_
+#define CUSTOMHID_ORIG_BOARD_H_
 
 #define RED 0x02
 #define BLUE 0x04
@@ -29,4 +29,4 @@ void blink_red(int ms);
 void blink_blue(int ms);
 void blink_green(int ms);
 
-#endif /* BOARD_H_ */
+#endif /* CUSTOMHID_ORIG_BOARD_H_ */

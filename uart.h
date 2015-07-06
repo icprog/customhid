@@ -5,11 +5,11 @@
  *      Author: sg
  */
 
-#ifndef UART_H_
-#define UART_H_
+#ifndef CUSTOMHID_ORIG_UART_H_
+#define CUSTOMHID_ORIG_UART_H_
 
 void ConfigureUART(void);
 
 
 
-#endif /* UART_H_ */
+#endif /* CUSTOMHID_ORIG_UART_H_ */

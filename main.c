@@ -29,7 +29,6 @@
 #include "board.h"
 #include "diagnostic.h"
 
-
 extern databuffer_t rxdata;
 extern databuffer_t txdata;
 extern tUSBDHIDDevice hiddatapipe_device;
@@ -42,6 +41,8 @@ void systickhandler(void) {
 		events.print_history = true;
 	else
 		events.print_history = false;
+
+	txdata.buffer[0]++;
 }
 
 
@@ -87,14 +88,28 @@ int main(void) {
     	;
 
     // Configure SysTick
-	ROM_SysTickPeriodSet(ROM_SysCtlClockGet() / 1000); // 1 ms
+	ROM_SysTickPeriodSet(ROM_SysCtlClockGet() / 1000); // 10 ms
 	ROM_SysTickEnable();
 	ROM_SysTickIntEnable();
+
+	// Enable first IN report by clearing USB tx complete
+	usbstate.txcomplete = 1;
 
     while(1) {
 
         if (events.print_history == true)
         	diagnostic_print_eventhistory();
+
+        // usbstate.txcomplete flag was set to 1 by txhandler after usbdhidreportwrite had succeeded
+        if (usbstate.txcomplete) {
+        	// clear usbstate.txcomplete flag to indicate that usbdhidreportwrite is busy
+        	usbstate.txcomplete = 0;
+
+        	// put data (1 byte in this case) into the usb pipeline and the host will poll&read it
+        	// the polling rate is defined in the interrupt IN endpoint descriptor
+        	USBDHIDReportWrite(&hiddatapipe_device, txdata.buffer, 1, 0);
+
+        }
 
     }
 }

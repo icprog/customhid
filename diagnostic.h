@@ -5,8 +5,8 @@
  *      Author: gsantha
  */
 
-#ifndef DIAGNOSTIC_H_
-#define DIAGNOSTIC_H_
+#ifndef CUSTOMHID_ORIG_DIAGNOSTIC_H_
+#define CUSTOMHID_ORIG_DIAGNOSTIC_H_
 
 #define EVENT_MAX_HISTORY_EVENTS 50
 #define EVENT_EMPTY 0xfffe
@@ -32,4 +32,4 @@ void diagnostic_add_event_to_history(uint32_t eventID, char const **ptrtostr);
 void diagnostic_eventhistory_updated(void);
 void diagnostic_print_eventhistory(void);
 
-#endif /* DIAGNOSTIC_H_ */
+#endif /* CUSTOMHID_ORIG_DIAGNOSTIC_H_ */

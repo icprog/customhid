@@ -170,7 +170,7 @@ const uint8_t interruptINendpoint_descriptor[HIDINENDPOINT_SIZE] =
     USB_EP_ATTR_INT,            // Endpoint is an interrupt endpoint.
     USBShort(USBFIFOSizeToBytes(USB_FIFO_SZ_64)),
                                 // The maximum packet size.
-    255,                         // The polling interval for this endpoint.
+    100,                         // The polling interval for this endpoint.
     							//either 1ms for low/full speed devices and 125us for high speed devices
 };
 
