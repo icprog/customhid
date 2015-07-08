@@ -238,8 +238,8 @@ const tConfigHeader * const hidconfig_descriptors[] = {
 
 
 tHIDReportIdle report_idle[1] = {
-        { 125, 0, 0, 0 } // Report 0 polled every 500 ms (4*125)
-//        { 0, 0, 0, 0 } // Report 0 never polled
+//        { 125, 0, 0, 0 } // Report 0 polled every 500 ms (4*125)
+        { 0, 0, 0, 0 } // Report 0 never polled
 };
 
 tUSBDHIDDevice hiddatapipe_device = {

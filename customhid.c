@@ -123,8 +123,8 @@ uint32_t rxhandler(void *pvCBData, uint32_t ui32Event, uint32_t ui32MsgData, voi
 	    	//! \b USBD_HID_EVENT_REPORT_SENT is sent.
 	    	//
 	    	//*****************************************************************************
-
-	    	*(uint8_t **) pvMsgData = &txdata.buffer[0];
+	    	rxdata.buffer[0] = 0x0d;
+	    	*(uint8_t **) pvMsgData = &rxdata.buffer[0];
 	    	return HID_PACKET_SIZE;
 	        break;
 

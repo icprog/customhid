@@ -3,6 +3,7 @@
 
 #define MAX_PACKET_SIZE   0x40              // Max size of the USB packets Full Speed is 64 bytes
 #define HID_PACKET_SIZE	0x01
+#define HID_REPORTOUT_SIZE 0x01
 typedef struct {
     uint8_t buffer[MAX_PACKET_SIZE];
     uint16_t size;

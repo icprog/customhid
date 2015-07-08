@@ -47,6 +47,7 @@ void systickhandler(void) {
 
 
 int main(void) {
+	int i;
 
     // Enable lazy stacking for interrupt handlers.  This allows floating-point
     // instructions to be used within interrupt handlers, but at the expense of
@@ -108,6 +109,17 @@ int main(void) {
         	// put data (1 byte in this case) into the usb pipeline and the host will poll&read it
         	// the polling rate is defined in the interrupt IN endpoint descriptor
         	USBDHIDReportWrite(&hiddatapipe_device, txdata.buffer, 1, 0);
+
+        }
+
+        if (usbstate.hostsentreport) {
+        	// clear hostsentreport flag
+        	usbstate.hostsentreport = 0;
+
+        	for (i = 0; i < HID_REPORTOUT_SIZE; i++) {
+        		UARTprintf("Received OUT report from host: %02x\n", rxdata.buffer[i]);
+        		rxdata.buffer[i] = 0;
+        	}
 
         }
 
