@@ -13,8 +13,8 @@ typedef struct {
 	uint8_t connected:1;
 	uint8_t hostsentreport:1;
 	uint8_t txcomplete:1;
-
-	uint8_t nc:6;
+	uint8_t txdataupdated:1;
+	uint8_t nc:4;
 }usbstate_t;
 
 

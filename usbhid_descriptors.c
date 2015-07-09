@@ -170,7 +170,7 @@ const uint8_t interruptINendpoint_descriptor[HIDINENDPOINT_SIZE] =
     USB_EP_ATTR_INT,            // Endpoint is an interrupt endpoint.
     USBShort(USBFIFOSizeToBytes(USB_FIFO_SZ_64)),
                                 // The maximum packet size.
-    100,                         // The polling interval for this endpoint.
+    250,                         // The polling interval for this endpoint.
     							//either 1ms for low/full speed devices and 125us for high speed devices
 };
 
@@ -238,8 +238,8 @@ const tConfigHeader * const hidconfig_descriptors[] = {
 
 
 tHIDReportIdle report_idle[1] = {
-//        { 125, 0, 0, 0 } // Report 0 polled every 500 ms (4*125)
-        { 0, 0, 0, 0 } // Report 0 never polled
+        { 125, 0, 0, 0 } // Report 0 polled every 500 ms (4*125)
+//        { 0, 0, 0, 0 } // Report 0 never polled
 };
 
 tUSBDHIDDevice hiddatapipe_device = {
